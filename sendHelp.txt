@@ -1,0 +1,30 @@
++=============================================================+
+Trouble shooting
+---------------------------------------------------------------
+If error launching package, run: 
+rospack find PACKAGENAME
+
+If above returns error, run:
+
+source /home/NAME*/catkin_ws/devel/setup.bash
+*Replace NAME with ur name, or change path to setup.bash file
+
+Run again: 
+rospack find PACKNAME
+
+Error launching package should be fixed.
++=============================================================+
+General Commands
+---------------------------------------------------------------
+Run teleop:
+ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+Launch empty world:
+roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+
+To list published stuffs:
+rostopic list
+
+To listen to published stuffs:
+rostopic echo NODE
+Node is in the form of /scan for example

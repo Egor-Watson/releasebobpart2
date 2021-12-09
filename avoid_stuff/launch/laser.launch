@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="avoid_stuff" type="avoid.py" name="avoid" output="screen">
+        
+    </node>
+</launch>
