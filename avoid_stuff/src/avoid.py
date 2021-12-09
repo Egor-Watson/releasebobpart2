@@ -3,7 +3,7 @@
 import rospy
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Point, Twist
-from turtlesim.msg import Pose
+#from turtlesim.msg import Pose
 from sensor_msgs.msg import LaserScan
 
 
@@ -51,8 +51,8 @@ def newOdom(msg):
     global y
     global theta
 
-    x = msg.pose.pose.position.x
-    y = msg.pose.pose.position.y
+    #x = msg.pose.pose.position.x
+    #y = msg.pose.pose.position.y
     #theta = msg.pose.pose.angle.z
 
 """
