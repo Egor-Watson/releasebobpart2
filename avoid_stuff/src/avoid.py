@@ -12,30 +12,23 @@ from sensor_msgs.msg import LaserScan
     
     msg contains an array called ranges with 360 values aka a lidar reading for each degree around the turtle bot.
     Currently we just use the lidar reading from right in front of the turtle bot (0 degrees). 
-
-    TODO: record more lidar reads for more careful avoidance. 
 """
-sensor = 0.0
 sensor_front_average = 0.0
 def lidar_reader(msg):
 
     # Define sensor as global variable so we can use its value for obstacle avoidance later
-    global sensor
     global sensor_front_average
 
-    sensor = msg.ranges[0]
     sensor_front_average = calculateFrontAverage(msg)
 
     print sensor_front_average
 
-    # print sensor
 
 """
     Returns the average lidar reading from 315 degrees to 45 degrees. i.e +45 and -45 degrees from the turtlebot's
     front.
 """
 def calculateFrontAverage(msg):
-    # Probably a better way to do this...
     # msg.ranges is also  tuple, so must convert to list first
     total = sum(list(msg.ranges[:45])) + sum(list(msg.ranges[315:360]))
 
@@ -107,16 +100,9 @@ pub.publish(speed)
 while not rospy.is_shutdown():
     speed.linear.x = 0.2
     speed.linear.y = 0.2
+    pub.publish(speed)
 
     if sensor_front_average < 0.6:
         moveDude()
-    #     speed.linear.x = -0.2
-    #     speed.linear.y = -0.2
-    #     speed.angular.z = 0.5
-    # else:
-    #     speed.linear.x = 0.2
-    #     speed.linear.y = 0.2
-    #     speed.angular.z = 0.0
 
-    # pub.publish(speed)
     r.sleep()
