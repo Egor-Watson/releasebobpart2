@@ -41,19 +41,6 @@ def calculateFrontAverage(msg):
 
     return total / 90.0
 
-""""
-    Reads current position of the turtle bot.
-    Global variables x, y store the current position of the turtle bot.
-    Can be used for better avoidance e.g. remember where obstacle was and go around it
-"""
-def newOdom(msg):
-    global x
-    global y
-    global theta
-
-    #x = msg.pose.pose.position.x
-    #y = msg.pose.pose.position.y
-    #theta = msg.pose.pose.angle.z
 
 """
     A better obstacle avoidance method
@@ -98,9 +85,6 @@ rospy.init_node('avoid')
 
 # Subscribe to lidar feed
 sub = rospy.Subscriber('/scan', LaserScan, lidar_reader)
-
-# Subscribe to position feed
-subPos = rospy.Subscriber("/odom", Odometry, newOdom)
 
 # To communicate speed and rotation we use a Twist object
 speed = Twist()
